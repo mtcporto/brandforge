@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BrandForge MVP Preview</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, Arial, Helvetica, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #020617; color: white; }
+      main { min-height: 100vh; padding: 40px; }
+      .wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 32px; }
+      .hero { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 32px; align-items: center; }
+      .badge, .pill { width: fit-content; border: 1px solid rgba(103,232,249,.4); background: rgba(103,232,249,.1); color: #cffafe; border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px; }
+      h1 { font-size: clamp(40px, 6vw, 68px); line-height: .95; letter-spacing: -.05em; margin: 22px 0; }
+      p { color: #cbd5e1; line-height: 1.7; font-size: 18px; }
+      .metrics, .steps { display: grid; gap: 12px; }
+      .metrics { grid-template-columns: repeat(3, 1fr); }
+      .metric, .step, .panel, details { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.06); border-radius: 22px; padding: 18px; }
+      .metric strong { color: #cffafe; display: block; font-size: 34px; }
+      .preview { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.1); border-radius: 28px; padding: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+      .art { border-radius: 22px; padding: 20px; background: linear-gradient(135deg, #ff4d8d, #ffd166, #06d6a0); }
+      .card { color: #020617; background: rgba(255,255,255,.92); border-radius: 20px; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+      .card h2 { font-size: 38px; line-height: 1.05; margin: 28px 0 18px; }
+      button { border: 0; border-radius: 999px; background: #020617; color: white; padding: 14px 18px; font-weight: 800; }
+      .steps { grid-template-columns: repeat(7, 1fr); }
+      .num { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; background: #34d399; color: #020617; border-radius: 999px; font-weight: 900; }
+      .grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; }
+      dt { color: #a5f3fc; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; font-size: 12px; }
+      dd { color: #cbd5e1; margin: 6px 0 18px; }
+      summary { cursor: pointer; font-weight: 900; }
+      pre { overflow: auto; border-radius: 16px; background: #020617; color: #e2e8f0; padding: 16px; font-size: 12px; line-height: 1.5; }
+      @media (max-width: 980px) { main { padding: 24px; } .hero, .grid { grid-template-columns: 1fr; } .steps { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="wrap">
+        <div class="hero">
+          <div>
+            <div class="badge">MVP transparente de pipeline criativo</div>
+            <h1>BrandForge transforma marca, conteúdo e objetivo em uma campanha pronta para gerar imagem.</h1>
+            <p>Em vez de um gerador caixa-preta, este MVP mostra cada agente do processo: análise de marca, extração de conteúdo, planejamento, direção criativa, prompt, geração e revisão de qualidade.</p>
+            <div class="metrics"><div class="metric"><strong>7</strong>Agentes</div><div class="metric"><strong>JSON</strong>Formato</div><div class="metric"><strong>≥ 9</strong>Review alvo</div></div>
+          </div>
+          <div class="preview"><div class="art"><div class="card"><b style="color:#db2777;letter-spacing:.25em">INSTAGRAM</b><h2>Você precisa ver: Festival de verão em João Pessoa reúne gastronomia</h2><p style="color:#334155;font-weight:800">gastronomia • música ao vivo • atrações gratuitas</p><button>Compartilhe agora</button></div></div></div>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><h3>Brand Analyzer</h3><p>Identidade visual e tom.</p></div>
+          <div class="step"><span class="num">2</span><h3>Content Extractor</h3><p>Tópicos acionáveis.</p></div>
+          <div class="step"><span class="num">3</span><h3>Campaign Planner</h3><p>Objetivo e CTA.</p></div>
+          <div class="step"><span class="num">4</span><h3>Creative Director</h3><p>Briefing criativo.</p></div>
+          <div class="step"><span class="num">5</span><h3>Prompt Builder</h3><p>Prompt visual.</p></div>
+          <div class="step"><span class="num">6</span><h3>Image Generator</h3><p>Payload da imagem.</p></div>
+          <div class="step"><span class="num">7</span><h3>Quality Review</h3><p>Nota e sugestões.</p></div>
+        </div>
+        <div class="grid">
+          <aside class="panel"><h2>Entrada do projeto</h2><dl><dt>instagram</dt><dd>@viva.joaopessoa</dd><dt>websiteUrl</dt><dd>https://vivajoaopessoa.com/eventos</dd><dt>platform</dt><dd>instagram</dd><dt>goal</dt><dd>engajar</dd><dt>strategy</dt><dd>viral</dd></dl></aside>
+          <section class="panel"><h2>Modo transparente <span class="pill">objetos JSON por agente</span></h2><details open><summary>Quality Review</summary><pre>{
+  "brandConsistency": 9.2,
+  "readability": 9.1,
+  "contrast": 9.3,
+  "cta": 8.9,
+  "overall": 9.1,
+  "suggestions": [
+    "Aumentar CTA se a peça for usada em stories.",
+    "Testar variação com rosto humano para campanhas virais."
+  ]
+}</pre></details></section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
