@@ -3,9 +3,9 @@ export type PipelineInput = {
   websiteUrl: string;
   audience: string;
   contentSource: string;
-  platform: "instagram" | "linkedin" | "tiktok";
+  platform: "instagram" | "facebook" | "linkedin" | "whatsapp" | "tiktok";
   goal: "engajar" | "vender" | "informar";
-  strategy: "viral" | "autoridade" | "conversao";
+  strategy: "viral" | "educativo" | "comunidade" | "autoridade" | "conversao";
 };
 
 export type AgentResult<T> = {
@@ -17,6 +17,8 @@ export type AgentResult<T> = {
 
 const paletteByStrategy = {
   viral: ["#ff4d8d", "#ffd166", "#06d6a0"],
+  educativo: ["#264653", "#2a9d8f", "#e9c46a"],
+  comunidade: ["#8f3f56", "#e5989b", "#ffddd2"],
   autoridade: ["#1d3557", "#457b9d", "#f1faee"],
   conversao: ["#2b2d42", "#ef233c", "#edf2f4"],
 };
@@ -25,9 +27,9 @@ export function runBrandForgePipeline(input: PipelineInput) {
   const brand = {
     primaryColors: paletteByStrategy[input.strategy],
     secondaryColors: ["#101828", "#ffffff", "#f8fafc"],
-    brandStyle: input.strategy === "viral" ? "vibrante e editorial" : "limpo e estratégico",
-    tone: input.goal === "engajar" ? "descontraído" : input.goal === "vender" ? "direto" : "educativo",
-    logo: "placeholder: conectar Instagram/logo no próximo incremento",
+    brandStyle: input.strategy === "viral" ? "vibrante e editorial" : input.strategy === "comunidade" ? "humano e acolhedor" : "limpo e estratégico",
+    tone: input.strategy === "comunidade" ? "pessoal" : input.goal === "engajar" ? "descontraído" : input.goal === "vender" ? "direto" : "educativo",
+    logo: input.instagram ? `${input.instagram} (perfil conectado)` : "logo não conectada",
     contrastRecommendations: [
       "Usar texto escuro sobre fundos claros para preservar legibilidade.",
       "Reservar a cor mais forte para CTA, selo ou palavra-chave.",
@@ -46,9 +48,9 @@ export function runBrandForgePipeline(input: PipelineInput) {
     platform: input.platform,
     goal: input.goal,
     strategy: input.strategy,
-    tone: input.strategy === "viral" ? "provocativo" : brand.tone,
-    cta: input.goal === "engajar" ? "Compartilhe com alguém que precisa ver isso" : input.goal === "vender" ? "Conheça a oferta" : "Leia o guia completo",
-    structure: input.strategy === "viral" ? "hook-list-cta" : input.strategy === "autoridade" ? "insight-prova-cta" : "dor-beneficio-cta",
+    tone: input.strategy === "viral" ? "provocativo" : input.strategy === "comunidade" ? "conversacional" : brand.tone,
+    cta: input.strategy === "comunidade" ? "Conte nos comentários o que você acha" : input.goal === "engajar" ? "Compartilhe com alguém que precisa ver isso" : input.goal === "vender" ? "Conheça a oferta" : "Leia o guia completo",
+    structure: input.strategy === "viral" ? "hook-list-cta" : input.strategy === "comunidade" ? "pergunta-contexto-conversa" : input.strategy === "educativo" || input.strategy === "autoridade" ? "dor-passos-cta" : "dor-beneficio-cta",
   };
 
   const creativeBrief = {
@@ -116,6 +118,8 @@ function extractKeywords(source: string) {
 
 function buildHeadline(title: string, strategy: PipelineInput["strategy"]) {
   if (strategy === "viral") return `Você precisa ver: ${title}`;
+  if (strategy === "comunidade") return `Quem mais precisa descobrir: ${title}?`;
+  if (strategy === "educativo") return `${title}: 3 coisas para saber antes de sair`;
   if (strategy === "autoridade") return `O que ${title} revela sobre sua marca`;
   return `${title}: transforme interesse em ação`;
 }

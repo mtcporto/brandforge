@@ -14,10 +14,15 @@ BrandForge é um MVP inspirado na ideia de um pipeline transparente de agentes p
 
 ## MVP implementado
 
-- Aplicação Next.js com uma landing page demonstrando o pipeline completo.
-- Dados mockados, mas tipados, para simular a jornada `@viva.joaopessoa` e uma campanha de Instagram.
-- Modo transparente com a saída JSON de cada agente.
-- Preview visual da peça para demonstrar como o prompt pode alimentar a etapa de imagem.
+- Wizard Next.js para escolher tipo, formato, canal, objetivo, abordagem e origem do conteúdo.
+- Fluxo de link com prévia do conteúdo encontrado e conexão de Instagram em modo demo.
+- Pipeline tipado com estratégias viral, educativo e comunidade.
+- Briefing criativo, review e preview visual antes de gerar a imagem.
+- Endpoint OAuth em `/api/instagram/connect`, pronto para credenciais da Meta.
+
+### Conexão com Instagram
+
+Copie `.env.example` para `.env.local`, preencha o `INSTAGRAM_APP_ID` e o `INSTAGRAM_REDIRECT_URI` cadastrados no Meta for Developers e altere `NEXT_PUBLIC_INSTAGRAM_OAUTH_ENABLED` para `true`. O callback e a troca do `code` por token ainda são o próximo incremento de integração; a geração permanece mockada neste MVP.
 
 ## Como visualizar rapidamente
 
