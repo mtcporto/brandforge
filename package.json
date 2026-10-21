@@ -28,5 +28,8 @@
     "@next/eslint-plugin-next": {
       "fast-glob": "$fast-glob"
     }
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
